@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>View Product</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      text-align: center;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .pagination a, .pagination span {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      margin: 0 5px;
+      text-decoration: none;
+      color: #333;
+    }
+    
+    .pagination .active {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Product Name</th>
+          <th>Category Id</th>
+          <th>Product Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(product => { %>
+          <tr>
+            <td><%= product.productId %></td>
+            <td><%= product.productName %></td>
+            <td><%= product.categoryId %></td>
+            <td><%= product.categoryName %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% if (totalPages > 1) { %>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="http://localhost:4000/viewProductPage?page=<%= currentPage - 1 %>">Prev</a>
+        <% } %>
+        <% for (var i = 1; i <= totalPages; i++) { %>
+          <% if (i === currentPage) { %>
+            <span class="active"><%= i %></span>
+          <% } else { %>
+            <a href="http://localhost:4000/viewProductPage?page=<%= i %>"><%= i %></a>
+          <% } %>
+        <% } %>
+        <% if (currentPage < totalPages) { %>
+          <a href="http://localhost:4000/viewProductPage?page=<%= currentPage + 1 %>">Next</a>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

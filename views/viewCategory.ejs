@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>View Product</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Category Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(category => { %>
+          <tr>
+            <td><%= category.categoryId %></td>
+            <td><%= category.name %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
